@@ -1,2 +1,2 @@
-const baseurl = "http://localhost:4000"
+const baseurl = "https://ophizeauthentication.onrender.com"
 export default baseurl;
