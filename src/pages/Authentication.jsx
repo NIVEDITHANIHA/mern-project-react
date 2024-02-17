@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ophiztaskLogin, ophiztaskRegister } from '../service/allApi';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import validator from 'validator'
 
 
 
@@ -35,6 +36,13 @@ const Authentication = ({ register }) => {
             toast.info("fill the form");
 
         }
+
+        else if (!validator.isEmail(email)) {
+            toast.error("invalid Email");
+            setTimeout(() => {
+            
+            }, 2000)
+        }
         else {
 
             const results = await ophiztaskRegister(registerOphiz)
@@ -63,6 +71,13 @@ const Authentication = ({ register }) => {
         if (!email || !password) {
             toast.info("Fill the Form");
 
+        }
+
+        else if (!validator.isEmail(email)) {
+            toast.error("invalid Email");
+            setTimeout(() => {
+           
+            }, 2000)
         }
 
         else {
@@ -121,7 +136,7 @@ const Authentication = ({ register }) => {
 
                         </div> : <div className='d-flex w-100 h-100  flex-column'>
                             <button className='btn btn-warning  mt-3' onClick={handleLogin} >Login</button>
-                            <span className='text-light'> New User ...? Click Here to<Link to="/register" className='text-warning'> Register</Link>  </span>
+                            <span className='text-light'> New User ...? Click Here to<Link to="/" className='text-warning'> Register</Link>  </span>
 
 
                         </div>}
